@@ -5,20 +5,20 @@ package progettofinale;
  * @author elisa-stefano-diego
  */
 
-public class Carta
+public class CartaBJ
 {
     int carta;
     int seme;
     int valore;
     
-    public Carta()
+    public CartaBJ()
     {
         carta=0;
         seme=0;
         valore=0;
     }
 
-    public Carta(int carta, int seme, int valore) 
+    public CartaBJ(int carta, int seme, int valore) 
     {
         this.carta = carta;
         this.seme = seme;

@@ -9,8 +9,7 @@ public class ProgettoFinale
 {
     public static void main(String[] args)
     {
-        Carta im = new Carta();   
-               
-        
+        BlackJack bj = new BlackJack();
+        Briscola br = new Briscola();
     }
 }
