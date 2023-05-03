@@ -38,7 +38,7 @@ public class MazzoBJ
         }
     }
     
-    public CartaBJ getCard(int i)
+    public CartaBJ getCarta(int i)
     {
         return mazzo.get(i);
     }
@@ -48,8 +48,8 @@ public class MazzoBJ
         return mazzo.remove(i);
     }
     
-    /*public void shuffleDeck()
+    public void shuffleDeck()
     {
         Collections.shuffle(mazzo);
-    }*/
+    }
 }
