@@ -48,8 +48,8 @@ public class MazzoBJ
         return mazzo.remove(i);
     }
     
-    public void shuffleDeck()
+    /*public void shuffleDeck()
     {
         Collections.shuffle(mazzo);
-    }
+    }*/
 }
