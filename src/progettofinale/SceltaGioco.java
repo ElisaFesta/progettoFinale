@@ -31,10 +31,12 @@ public class SceltaGioco extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("SCEGLI IL GIOCO:");
+        jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
+        jLabel1.setLabelFor(jLabel1);
+        jLabel1.setText("A COSA VUOI GIOCARE?");
 
         buttonGroup1.add(BlackJack);
-        BlackJack.setText("BLACKJACK");
+        BlackJack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettofinale/blackjack.jpg"))); // NOI18N
         BlackJack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BlackJackActionPerformed(evt);
@@ -42,7 +44,7 @@ public class SceltaGioco extends javax.swing.JFrame
         });
 
         buttonGroup1.add(Briscola);
-        Briscola.setText("BRISCOLA");
+        Briscola.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettofinale/briscolaa1.jpg"))); // NOI18N
         Briscola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BriscolaActionPerformed(evt);
@@ -54,26 +56,27 @@ public class SceltaGioco extends javax.swing.JFrame
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addComponent(BlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(Briscola, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
+                .addContainerGap(95, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(BlackJack)
+                        .addGap(62, 62, 62)
+                        .addComponent(Briscola)
+                        .addGap(50, 50, 50))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(253, 253, 253))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BlackJack)
-                    .addComponent(Briscola))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Briscola, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,8 +99,7 @@ public class SceltaGioco extends javax.swing.JFrame
     }//GEN-LAST:event_BlackJackActionPerformed
 
     private void BriscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BriscolaActionPerformed
-        
-        
+
     }//GEN-LAST:event_BriscolaActionPerformed
 
     /**

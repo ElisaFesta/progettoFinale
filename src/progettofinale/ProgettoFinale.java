@@ -9,7 +9,8 @@ public class ProgettoFinale
 {
     public static void main(String[] args)
     {
-        BlackJack bj = new BlackJack();
-        Briscola br = new Briscola();
+        SceltaGioco sg = new SceltaGioco();
+        //BlackJack bj = new BlackJack();
+        //Briscola br = new Briscola();
     }
 }
