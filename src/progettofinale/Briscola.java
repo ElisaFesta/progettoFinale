@@ -11,6 +11,7 @@ public class Briscola extends javax.swing.JFrame
      * Creates new form Briscola
      */
     public Briscola() {
+        setVisible(true);
         initComponents();
     }
 
