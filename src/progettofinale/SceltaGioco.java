@@ -32,6 +32,9 @@ public class SceltaGioco extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 102, 51));
+        jPanel1.setForeground(new java.awt.Color(153, 153, 153));
+
         jLabel1.setFont(new java.awt.Font("Yu Gothic Medium", 1, 24)); // NOI18N
         jLabel1.setLabelFor(jLabel1);
         jLabel1.setText("A COSA VUOI GIOCARE?");
@@ -73,10 +76,10 @@ public class SceltaGioco extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Briscola, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(Briscola, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BlackJack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
@@ -101,6 +104,7 @@ public class SceltaGioco extends javax.swing.JFrame
 
     private void BriscolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BriscolaActionPerformed
         Briscola br = new Briscola();
+        setVisible(false);
     }//GEN-LAST:event_BriscolaActionPerformed
 
     /**
