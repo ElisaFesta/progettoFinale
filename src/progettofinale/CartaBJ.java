@@ -1,42 +1,36 @@
 package progettofinale;
 
+import java.awt.*;
+
 /**
  *
  * @author elisa-stefano-diego
  */
 
-public class CartaBJ
-{
-    int carta;
-    int seme;
-    int valore;
+public class CartaBJ {
+    private String seme;
+    private String valore;
+    private Color colore;
     
-    public CartaBJ()
+    public CartaBJ(String valore, String seme, Color colore) 
     {
-        carta=0;
-        seme=0;
-        valore=0;
-    }
-
-    public CartaBJ(int carta, int seme, int valore) 
-    {
-        this.carta = carta;
+        this.colore = colore;
         this.seme = seme;
         this.valore = valore;
     }
 
-    public int getCarta() 
-    {
-        return carta;
-    }
-
-    public int getSeme()
+    public String getCarta() 
     {
         return seme;
     }
 
-    public int getValore() 
+    public Color getSeme()
+    {
+        return colore;
+    }
+
+    public String getValore() 
     {
         return valore;
-    }  
+    } 
 }
