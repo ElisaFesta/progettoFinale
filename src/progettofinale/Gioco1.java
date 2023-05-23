@@ -398,25 +398,27 @@ public class Gioco1 extends javax.swing.JFrame {
         jTextField1.setText(livello_attule);
 
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
+    //metodo che crea un nuovo file di testo con un nome specifico (basato su data e numero)
+    //vi scrive la stringa "1" e successivamente mostra un'istanza di QuattroImmagini, nascondendo il componente corrente.
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String util = String.valueOf(data);
-        util = "profilo_" + numero + ".txt";
-        System.out.println(util);
+        String util = String.valueOf(data); //crea variabile di tipo String chiamata util e la inizializza con il valore convertito dalla variabile data in una stringa
+        util = "profilo_" + numero + ".txt";    //modifica il valore della variabile util concatenandolo con la stringa "profilo_" e il valore della variabile numero
+        System.out.println(util);   //stampa il valore della variabile util
 
         try {
-            writer = new PrintWriter(util);
-            writer.print("1");
-            writer.close();
-            System.out.println("stampa eseguita correttamente");
+            writer = new PrintWriter(util); //prova ad aprire un oggetto 'PrintWriter' chiamato 'writer' per scrivere sul file con il nome specificato nella variabile util
+            writer.print("1");  //scrive la stringa "1" nel file 
+            writer.close(); //chiude il PrintWriter 
+            System.out.println("stampa eseguita correttamente");    //messaggio di stampa eseguita 
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred.");   //messaggio di errore
             e.printStackTrace();
         }
 
-        QuattroImmagini l = new QuattroImmagini();
-        l.setVisible(true);
-        this.setVisible(false);
+        QuattroImmagini l = new QuattroImmagini();  //crea un nuovo oggetto 'QuattroImmagini' chiamato 'l'
+        l.setVisible(true); //rende visibile l'oggetto 'l'
+        this.setVisible(false); //nasconde l'oggetto corrente
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

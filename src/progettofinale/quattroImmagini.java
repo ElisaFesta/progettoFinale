@@ -35,6 +35,8 @@ public class QuattroImmagini extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    //costruttore che legge il contenuto del file "startup.txt" e in base al numero di righe lette, imposta la visibilità dei pulsanti
     public QuattroImmagini() {
 
         initComponents();
@@ -42,64 +44,56 @@ public class QuattroImmagini extends javax.swing.JFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         profilo1_button.setVisible(false);
-        profilo2_button.setVisible(false);
+        profilo2_button.setVisible(false);  //imposta i button non visibili 
         profilo3_button.setVisible(false);
-        boolean[] profili = {false, false, false};
+        boolean[] profili = {false, false, false}; //crea array di profili
         int i = 0;
         try {
-            File myObj = new File("startup.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                if (data != null) {
-                    profili[i] = true;
-
-                    i++;
+            File myObj = new File("startup.txt"); //creazione oggetto 'File' chiamato 'myObj' con il nome del file "startup.txt"
+            Scanner myReader = new Scanner(myObj);  //creazione oggetto 'Scanner' chiamato 'myReader' per leggere il contenuto del file "startup.txt"
+            while (myReader.hasNextLine()) {    //inizio ciclo per leggere il file riga per riga
+                String data = myReader.nextLine();  //legge la riga corrente del file e la memorizza nella variabile data
+                if (data != null) { //se la variabile data non è nulla, imposta l'elemento corrispondente nell'array profili come 'true',
+                    profili[i] = true; //l'array tiene traccia di quali profili sono stati salvati nel file
+                    i++;    //incrementa la i
                 }
-                if (i == 1) {
-
+                if (i == 1) {   //se i è uguale a 1, imposta il pulsante profilo1_button visibile
                     profilo1_button.setVisible(true);
                     profilo1_button.setText(data);
-
                 }
-                if (i == 2) {
-
+                if (i == 2) {   //se i è uguale a 2, imposta il pulsante profilo2_button visibile
                     profilo2_button.setVisible(true);
                     profilo2_button.setText(data);
-
                 }
-                if (i == 3) {
-
+                if (i == 3) {   //se i è uguale a 3, imposta il pulsante profilo3_button visibile
                     profilo3_button.setVisible(true);
                     profilo3_button.setText(data);
-                    jButton1.setVisible(false);
-
+                    jButton1.setVisible(false); //nasconde il pulsante
                 }
-
             }
-            myReader.close();
+            myReader.close();   //termina il programma
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred.");   //viene stampato un messaggio di errore
             e.printStackTrace();
         }
 
     }
-
-    ////////////////////////////////////////////separatore////////////////////////////////////////////
+    
+    //
     public QuattroImmagini(int value) {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         profilo1_button.setVisible(false);
-        profilo2_button.setVisible(false);
+        profilo2_button.setVisible(false);  //imposta i button non visibili
         profilo3_button.setVisible(false);
-        boolean[] profili = {false, false, false};
+        boolean[] profili = {false, false, false};  //crea array di profili
 
         try {
-            File myObj = new File("startup.txt");
-            Scanner myReader = new Scanner(myObj);
+            File myObj = new File("startup.txt");   //creazione oggetto 'File' chiamato 'myObj' con il nome del file "startup.txt"
+            Scanner myReader = new Scanner(myObj);  //creazione oggetto 'Scanner' chiamato 'myReader' per leggere il contenuto del file "startup.txt"
 
-            if (value == 1) {
+            if (value == 1) {   //
                 if (myReader.hasNextLine()) {
                     data3 = myReader.nextLine();
                     System.out.println(data3);
@@ -190,16 +184,6 @@ public class QuattroImmagini extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-        /* try {
-              writer = new PrintWriter(new BufferedWriter(new FileWriter("startup.txt", true)));
-            writer.print(data2);
-            writer.close();
-            
-            System.out.println("stampa eseguita correttamente");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }*/
         int i = 0;
         try {
             File myObj = new File("startup.txt");
@@ -640,19 +624,20 @@ public class QuattroImmagini extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //metodo che cancella il contenuto del file "startup.txt", lo chiude e quindi termina l'applicazione 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PrintWriter writer;
+        PrintWriter writer; //crea oggetto 'writer' di tipo 'PrintWriter' per scrivere sul file "startup.txt"
         try {
             writer = new PrintWriter("startup.txt");
-            writer.print("");
-            writer.close();
-            System.out.println("reset eseguito con successo");
+            writer.print("");   //sovrascrive il contenuto di "startup.txt" con una stringa vuota
+            writer.close(); //chiude il 'PrintWriter'
+            System.out.println("reset eseguito con successo"); //stampa il messaggio
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred.");   //stampa errore
             e.printStackTrace();
         }
-        System.exit(0);
+        System.exit(0); //termina il programma
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
