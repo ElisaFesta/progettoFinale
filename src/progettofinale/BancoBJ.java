@@ -10,12 +10,9 @@ import java.util.ArrayList;
 class BancoBJ {
     private final int SUP = 16; // Minimo da superare; in caso contrario si estrae una nuova carta
     private final int TOT = 21; // Totale da non superare
-    // Memorizza i punti della mano corrente
-    private int punti_accumulati = 0;
-    // Memorizza le fiches del gioco.
-    private int fiches = 200000;
+    private int punti_accumulati = 0; // Memorizza i punti della mano corrente
 
-    private ArrayList<CartaBJ> carte_giocate;
+    private ArrayList<CartaBJ> carte_giocate; //utilizzato per memorizzare le carte distribuite al banco durante le diverse fasi del gioco 
 
     BancoBJ() {
         carte_giocate = new ArrayList<CartaBJ>();
@@ -24,18 +21,12 @@ class BancoBJ {
     // Riporta le variabili allo stato iniziale della partita
     void azzera() {
         punti_accumulati = 0;
-        fiches = 200000;
         carte_giocate.clear();
     }
 
     // Ottiene i punti della mano
     int getPuntiMano() {
         return punti_accumulati;
-    }
-    
-    // Ottiene le fiches
-    int getFiches() {
-        return fiches;
     }
     
     // Restituisce il numero di carte giocate
@@ -53,11 +44,7 @@ class BancoBJ {
         this.punti_accumulati += punti_accumulati;
     }
     
-    void setFiches(int fiches) {
-        this.fiches = fiches;
-    }
-    
-    //aggiunge una nuova carta
+    // aggiunge una nuova carta
     void addCartaGiocata(CartaBJ carta) {
         carte_giocate.add(carta);
     }

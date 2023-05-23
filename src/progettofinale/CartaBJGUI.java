@@ -36,20 +36,11 @@ public class CartaBJGUI extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 	g2.setPaint(Color.WHITE);
-	
-	// Disegna il rettangolo dagli angoli 0,0 del JPanel di larghezza W ed altezza H
-	Rectangle2D rect = new Rectangle2D.Double(0,0,W,H);
-	g2.fill(rect);
-	g2.draw(rect);
-	
-	/*// Seme della carta
-	if(carta.getSeme().equals("P")) g2.drawImage(new ImageIcon("img/picche.png").getImage(),12,30,null);
-	else if(carta.getSeme().equals("F")) g2.drawImage(new ImageIcon("img/fiori.png").getImage(),12,30,null);
-	else if(carta.getSeme().equals("D")) g2.drawImage(new ImageIcon("img/quadri.png").getImage(),12,30,null);
-	else if(carta.getSeme().equals("C")) g2.drawImage(new ImageIcon("img/cuori.png").getImage(),12,30,null);
-	*/
+	Rectangle2D rettangolo = new Rectangle2D.Double(0,0,W,H); //disegna il rettangolo dagli angoli 0,0 del JPanel di larghezza W ed altezza H
+	g2.fill(rettangolo); //riempie la forma rettangolo con il colore corrente impostato in g2
+	g2.draw(rettangolo); //disegna il contorno della forma rettangolo utilizzando il colore corrente impostato in g2
 	g2.setColor(carta.getSeme());
 	g2.setFont(new Font("Helvetica",Font.PLAIN,40));
-	g2.drawString(carta.getValore(),10,40);
+	g2.drawString(carta.getValore(),10,40); //disegna il valore della carta come una stringa di testo sulla posizione specificata
     }
 }

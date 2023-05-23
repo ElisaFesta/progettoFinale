@@ -8,10 +8,8 @@ import java.util.*;
  */
 
 class PuntiCarte {
-    private static LinkedHashMap<String,Integer> punti = new LinkedHashMap<String,Integer>();
-    private PuntiCarte() {}
-    
-    static 
+    private static LinkedHashMap<String,Integer> punti = new LinkedHashMap<String,Integer>(); //array dinamico utilizzzato per memorizzare i punti
+    static //assegna i valori fissi delle carte
     {
         punti.put("2",2);
         punti.put("3",3);
@@ -27,7 +25,7 @@ class PuntiCarte {
         punti.put("Q",10);
         punti.put("K",10);
     }
-    
+    //visualizza il valore della carta
     public static int getValoreCarta(String key) {
         return punti.get(key);
     }

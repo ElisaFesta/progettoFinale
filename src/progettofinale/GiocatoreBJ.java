@@ -10,9 +10,6 @@ import java.util.*;
 class GiocatoreBJ {
     // Soldi ad inizio partita
     private final int INITIAL_POT = 2000;
-    // Punteggio per (come minimo) pareggiare la partita
-    private final int TOTAL = 21;
-
     // Soldi a disposizione del giocatore
     private int portafoglio;
     // puntata_effettuata si riferisce ai soldi scommessi ad inizio partita
@@ -20,8 +17,8 @@ class GiocatoreBJ {
     // Memorizza i punti totalizzati nella mano corrente
     private int punti_accumulati = 0;
 
-    private ArrayList<CartaBJ> carte_giocate;
-
+    private ArrayList<CartaBJ> carte_giocate; //utilizzato per memorizzare le carte distribuite ai giocatori durante le diverse fasi del gioco 
+    
     GiocatoreBJ() {
         portafoglio = INITIAL_POT;
         carte_giocate = new ArrayList<CartaBJ>();
@@ -52,7 +49,6 @@ class GiocatoreBJ {
         return puntata_effettuata;
     }
     
-
     //restituisce i punti accumulati nella mano corrente
     int getPuntiMano() {
         return punti_accumulati;
@@ -64,7 +60,7 @@ class GiocatoreBJ {
     }
     
     //Restituisce il valore della carta giocata
-    String getValoreCarta(int index) { //index Indice della carta nel mazzo
+    String getValoreCarta(int index) { //index è l'indice della carta nel mazzo
         return carte_giocate.get(index).getValore();
     }
      

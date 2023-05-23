@@ -25,16 +25,41 @@ public class BlackJack extends javax.swing.JFrame {
         cinqueCento.setEnabled(false);
     }
     
-    // Classi utilizzate dal software - non grafiche
+    // Classi utilizzate dal programma
     private GiocatoreBJ giocatore = new GiocatoreBJ();
     private BancoBJ banco = new BancoBJ();
     // Memorizzo le carte giocate
-    private LinkedList<CartaBJGUI> carte_giocate = new LinkedList<CartaBJGUI>(); //array dinamico
+    private LinkedList<CartaBJGUI> carte_giocate = new LinkedList<CartaBJGUI>(); //array dinamico delle carte giocate
     // Posizione carte
-    private int x_g=5,y_g=300;
-    private int x_b=5,y_b=300;
-
+    private int x_g=5,y_g=300; //per il giocatore
+    private int x_b=5,y_b=300; //per il banco
+    // Il banco all'inizio non può avere blackJack
     private boolean blackJackBanco = false;
+    
+    // Controlla se si verifica un blackjack confrontando le carte del Banco o del Giocatore 
+    // a seconda del parametro obj con un Asso e una carta dal valore di 10. 
+    private boolean blackJack(String obj) {
+        String val1="";
+        String val2="";
+        if(("B".equals(obj)) && (banco.getNGiocate() == 2)) {
+          val1 = banco.getValoreCarta(0);
+          val2 = banco.getValoreCarta(1);
+        } 
+        else if(("G".equals(obj)) && (giocatore.getNGiocate() == 2)) {
+          val1 = giocatore.getValoreCarta(0);
+          val2 = giocatore.getValoreCarta(1);
+        }
+        else {
+          return false;
+        }
+        if(val1.equals("A") && (PuntiCarte.getValoreCarta(val2) == 10)) {
+          return true;
+        }
+        else if(val2.equals("A") && (PuntiCarte.getValoreCarta(val1) == 10)) {
+          return true;
+        }
+        return false;
+    }
     
     // Controllo del BlacjJack
     private void controllaBJ() {
@@ -52,7 +77,7 @@ public class BlackJack extends javax.swing.JFrame {
             }
             else if(blackJack("B") && !blackJack("G")) {
                 System.out.println(blackJack("B"));
-                JOptionPane.showMessageDialog(null,"BlackJack!\nIl Banco ha vinto!");
+                JOptionPane.showMessageDialog(null,"BlackJack!");
                 blackJackBanco = true;
                 nuovaMano();
             }
@@ -61,7 +86,7 @@ public class BlackJack extends javax.swing.JFrame {
 
     // Controlli per la vittoria
     private void controllaPunti() {
-      if((giocatore.getPuntiMano() == 21) && (blackJackBanco==false)) {
+        if((giocatore.getPuntiMano() == 21) && (blackJackBanco==false)) {
             // Vengono contate le carte fino a che il punteggio non è maggiore di 16 a quel punto ci si ferma
             while(banco.getPuntiMano() <= 16) {
                 daiCartaBanco();
@@ -84,41 +109,41 @@ public class BlackJack extends javax.swing.JFrame {
                 giocatore.setPortafoglio(giocatore.getPortafoglio()+giocatore.getPuntata()); 
                 nuovaMano();
             }
-          }
-          // Se il giocatore sballa
-          else if((giocatore.getPuntiMano() > 21) && (banco.getPuntiMano() <=21)) {
-                JOptionPane.showMessageDialog(null,"Hai sballato!");
-                nuovaMano();
-          }
-          // Se il banco sballa
-          else if((banco.getPuntiMano() > 21) && (giocatore.getPuntiMano() <= 21)) {
-                JOptionPane.showMessageDialog(null,"Il Banco sballa!");
-                giocatore.setPortafoglio(giocatore.getPortafoglio()+(giocatore.getPuntata()*2));
-                nuovaMano();
-          }
-          // Se giocatore < banco e banco compreso tra 17 e 21; il banco vince
+        }
+        // Se il giocatore sballa
+        else if((giocatore.getPuntiMano() > 21) && (banco.getPuntiMano() <=21)) {
+              JOptionPane.showMessageDialog(null,"Hai sballato!");
+              nuovaMano();
+        }
+        // Se il banco sballa
+        else if((banco.getPuntiMano() > 21) && (giocatore.getPuntiMano() <= 21)) {
+              JOptionPane.showMessageDialog(null,"Il Banco sballa!");
+              giocatore.setPortafoglio(giocatore.getPortafoglio()+(giocatore.getPuntata()*2));
+              nuovaMano();
+        }
+        // Se giocatore < banco e banco compreso tra 17 e 21; il banco vince
         else if((giocatore.getPuntiMano() < banco.getPuntiMano()) && (banco.getPuntiMano() <= 21) && (banco.getPuntiMano() >= 17)) {
-                JOptionPane.showMessageDialog(null,"Il Banco vince!");
-                nuovaMano();
-          }
-          // Se giocatore > banco e banco compreso tra 17 e 21; giocatore vince.
-          else if(giocatore.getPuntiMano() > banco.getPuntiMano() && (banco.getPuntiMano() <= 21) && (banco.getPuntiMano() >= 17)) {
-                JOptionPane.showMessageDialog(null,"Hai vinto!");
-                giocatore.setPortafoglio(giocatore.getPortafoglio()+(giocatore.getPuntata()*2));
-                nuovaMano();
-          }
-          // banco e giocatore > 21; entranbi hanno sballato
-          else if((giocatore.getPuntiMano() > 21) && (banco.getPuntiMano() > 21)) {
-                JOptionPane.showMessageDialog(null,"Il Banco ed il Giocatore hanno sballato!");
-                giocatore.setPortafoglio(giocatore.getPortafoglio()+giocatore.getPuntata());
-                nuovaMano();
-          }
-          // Banco == giocatore; in cui giocatore diverso da 21 e banco con più di 1 carta giocata
-          else if(giocatore.getPuntiMano() == banco.getPuntiMano() && (giocatore.getPuntiMano() != 21) && (banco.getNGiocate() != 1)) {
-                JOptionPane.showMessageDialog(null,"Pareggio!");
-                giocatore.setPortafoglio(giocatore.getPortafoglio()+giocatore.getPuntata());
-                nuovaMano();
-          }
+              JOptionPane.showMessageDialog(null,"Il Banco vince!");
+              nuovaMano();
+        }
+        // Se giocatore > banco e banco compreso tra 17 e 21; giocatore vince.
+        else if(giocatore.getPuntiMano() > banco.getPuntiMano() && (banco.getPuntiMano() <= 21) && (banco.getPuntiMano() >= 17)) {
+              JOptionPane.showMessageDialog(null,"Hai vinto!");
+              giocatore.setPortafoglio(giocatore.getPortafoglio()+(giocatore.getPuntata()*2));
+              nuovaMano();
+        }
+        // banco e giocatore > 21; entranbi hanno sballato
+        else if((giocatore.getPuntiMano() > 21) && (banco.getPuntiMano() > 21)) {
+              JOptionPane.showMessageDialog(null,"Il Banco ed il Giocatore hanno sballato!");
+              giocatore.setPortafoglio(giocatore.getPortafoglio()+giocatore.getPuntata());
+              nuovaMano();
+        }
+        // Banco == giocatore; in cui giocatore diverso da 21 e banco con più di 1 carta giocata
+        else if(giocatore.getPuntiMano() == banco.getPuntiMano() && (giocatore.getPuntiMano() != 21) && (banco.getNGiocate() != 1)) {
+              JOptionPane.showMessageDialog(null,"Pareggio!");
+              giocatore.setPortafoglio(giocatore.getPortafoglio()+giocatore.getPuntata());
+              nuovaMano();
+        }
     }
     
     // Assegna una carta al banco
@@ -126,22 +151,22 @@ public class BlackJack extends javax.swing.JFrame {
         CartaBJ c;
 	CartaBJGUI cg;
 	
-	// Ottengo la prima carta del mazo
+	// Ottengo la prima carta del mazzo
 	c = MazzoBJ.getCarta();
-	banco.setPunti(PuntiCarte.getValoreCarta(""+c.getValore()));
-	cg = new CartaBJGUI(c);
+	banco.setPunti(PuntiCarte.getValoreCarta(""+c.getValore())); //segna i punti accumolati
+	
+        cg = new CartaBJGUI(c); //creo la parte grafica della carta c1
+	pannello_carteB.add(cg); //aggiunta della carta al pannello ed ai contenitori
+	carte_giocate.add(cg); //aggiunta della carta all'array
+	banco.addCartaGiocata(c); //aggiunge una nuova carta al banco
         
-        // Aggiunta della carta al pannello ed ai contenitori
-	pannello_carteB.add(cg);
-	carte_giocate.add(cg);
-	banco.addCartaGiocata(c);
-        
-	// Setto la posizione della carta sulla finestra
-	cg.setBounds(x_b*banco.getNGiocate(),y_b,cg.getWidth(),cg.getHeight());
+	// Setto la posizione della carta sulla finestra 
+        // x posizione orizzontale, y posizione verticale, larghezza carta, altezza carta
+	cg.setBounds(x_b*banco.getNGiocate(),y_b,cg.getWidth(),cg.getHeight()); 
 
 	punti_banco.setText("Punti Banco: "+banco.getPuntiMano());
 	
-	// Effettuo una stampa del pannello e lo valido
+	// Effettuo una stampa del pannello ed esegue una validazione
         pannello_carteB.repaint();
 	pannello_carteB.validate();
     }
@@ -153,20 +178,20 @@ public class BlackJack extends javax.swing.JFrame {
 
         // Ottengo la prima carta del mazzo
         c1 = MazzoBJ.getCarta();
-        giocatore.setPuntiMano(PuntiCarte.getValoreCarta(""+c1.getValore()));
-        cg1 = new CartaBJGUI(c1);
+        giocatore.setPuntiMano(PuntiCarte.getValoreCarta(""+c1.getValore())); //segna i punti accumolati
         
-        // Aggiunta della carta al pannello ed ai contenitori
-        pannello_carteG.add(cg1);
-        carte_giocate.add(cg1);
-        giocatore.addCartaGiocata(c1); 
+        cg1 = new CartaBJGUI(c1); //creo la parte grafica della carta c1
+        pannello_carteG.add(cg1); //aggiunta della carta al pannello ed ai contenitori
+        carte_giocate.add(cg1); //aggiunta della carta all'array
+        giocatore.addCartaGiocata(c1); //aggiunge una nuova carta
         
         // Setto la posizione della carta sul pannello
+        // x posizione orizzontale, y posizione verticale, larghezza carta, altezza carta
         cg1.setBounds(x_g*giocatore.getNGiocate(),y_g,cg1.getWidth(),cg1.getHeight());
 
         punti_giocatore.setText("Punti Giocatore: "+giocatore.getPuntiMano());
 
-        // Effettuo una stampa del pannello e lo valido
+        // Effettuo una stampa del pannello ed esegue una validazione
         pannello_carteG.repaint();
         pannello_carteG.validate();
     }	
@@ -177,12 +202,14 @@ public class BlackJack extends javax.swing.JFrame {
         banco.azzera();
         carte_giocate.clear();
 
-        pannello_carteB.removeAll();
-        pannello_carteB.repaint();
-        pannello_carteB.validate();
-        pannello_carteG.removeAll();
-        pannello_carteG.repaint();
-        pannello_carteG.validate();
+        pannello_carteB.removeAll(); //rimuove tutti i componenti dal pannello
+        pannello_carteB.repaint(); //richiede al pannello di ridisegnare se stesso. 
+        pannello_carteB.validate(); //richiede al pannello di eseguire una validazione.
+        
+        pannello_carteG.removeAll(); //rimuove tutti i componenti dal pannello
+        pannello_carteG.repaint(); //richiede al pannello di ridisegnare se stesso. 
+        pannello_carteG.validate();//richiede al pannello di eseguire una validazione.
+        
         punti_giocatore.setText("Punti giocatore:");
         punti_banco.setText("Punti banco:");
 
@@ -209,31 +236,6 @@ public class BlackJack extends javax.swing.JFrame {
         stand.setEnabled(value);
         hit.setEnabled(value);
         deal.setEnabled(value);
-    }
-
-    // Controlla se si verifica un blackjack confrontando le carte del banco o del giocatore 
-    // a seconda del parametro obj con un asso e una carta dal valore di 10. 
-    private boolean blackJack(String obj) {
-        String val1="";
-        String val2="";
-        if(("BANCO".equals(obj)) && (banco.getNGiocate() == 2)) {
-          val1 = banco.getValoreCarta(0);
-          val2 = banco.getValoreCarta(1);
-        } 
-        else if(("GIOCATORE".equals(obj)) && (giocatore.getNGiocate() == 2)) {
-          val1 = giocatore.getValoreCarta(0);
-          val2 = giocatore.getValoreCarta(1);
-        }
-        else {
-          return false;
-        }
-        if(val1.equals("ASSO") && (PuntiCarte.getValoreCarta(val2) == 10)) {
-          return true;
-        }
-        else if(val2.equals("ASSO") && (PuntiCarte.getValoreCarta(val1) == 10)) {
-          return true;
-        }
-        return false;
     }
     
     /**
@@ -311,13 +313,13 @@ public class BlackJack extends javax.swing.JFrame {
         cinqueCento.setBounds(100, 50, 70, 23);
 
         punti_banco.setBackground(new java.awt.Color(255, 255, 255));
-        punti_banco.setText("Punti banco:");
+        punti_banco.setText("Punti Banco:");
         punti_banco.setOpaque(true);
         getContentPane().add(punti_banco);
         punti_banco.setBounds(470, 30, 150, 16);
 
         punti_giocatore.setBackground(new java.awt.Color(255, 255, 255));
-        punti_giocatore.setText("Punti giocatore:");
+        punti_giocatore.setText("Punti Giocatore:");
         punti_giocatore.setOpaque(true);
         getContentPane().add(punti_giocatore);
         punti_giocatore.setBounds(470, 50, 150, 16);
@@ -386,6 +388,7 @@ public class BlackJack extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //per non voler più carte
     private void standActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standActionPerformed
         while(banco.getPuntiMano() <= 16) {
             daiCartaBanco();
@@ -445,17 +448,19 @@ public class BlackJack extends javax.swing.JFrame {
         scommessa.setText("Scommessa: "+giocatore.getPuntata()+"$");		
     }//GEN-LAST:event_cinqueCentoActionPerformed
 
+    //chiede la carta iniziale
     private void dealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealActionPerformed
         // Disattivo i bottoni delle fiches e il deal
         fichesEnabled(false);
-        //attivo hit e stand
         deal.setEnabled(false);
+        //attivo hit e stand
         hit.setEnabled(true);
         stand.setEnabled(true);
         daiCartaGiocatore();
         daiCartaBanco();
     }//GEN-LAST:event_dealActionPerformed
 
+    //chiede una carta
     private void hitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitActionPerformed
         controllaPunti();
         daiCartaGiocatore();
@@ -464,15 +469,16 @@ public class BlackJack extends javax.swing.JFrame {
     }//GEN-LAST:event_hitActionPerformed
 
     private void new_gameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_new_gameActionPerformed
-        // Svuoto le varie collection ed azzero le variabili
+        // Svuoto le carte giocate ed azzero le variabili
         giocatore.azzera();
 	banco.azzera();
 	carte_giocate.clear();
 	
-	// Rimuovo gli elementi grafici dal pannello
+	// Rimuovo gli elementi grafici dal pannello del banco
 	pannello_carteB.removeAll();
 	pannello_carteB.repaint();
 	pannello_carteB.validate();
+        // Rimuovo gli elementi grafici dal pannello del giocatore
         pannello_carteG.removeAll();
 	pannello_carteG.repaint();
 	pannello_carteG.validate();

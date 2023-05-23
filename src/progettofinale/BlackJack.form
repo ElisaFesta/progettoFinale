@@ -95,7 +95,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Punti banco:"/>
+        <Property name="text" type="java.lang.String" value="Punti Banco:"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>
@@ -109,7 +109,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Punti giocatore:"/>
+        <Property name="text" type="java.lang.String" value="Punti Giocatore:"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>
