@@ -29,7 +29,7 @@ public class BlackJack extends javax.swing.JFrame {
     private GiocatoreBJ giocatore = new GiocatoreBJ();
     private BancoBJ banco = new BancoBJ();
     // Memorizzo le carte giocate
-    private LinkedList<CartaBJGUI> carte_giocate = new LinkedList<CartaBJGUI>();
+    private LinkedList<CartaBJGUI> carte_giocate = new LinkedList<CartaBJGUI>(); //array dinamico
     // Posizione carte
     private int x_g=5,y_g=300;
     private int x_b=5,y_b=300;
@@ -146,6 +146,7 @@ public class BlackJack extends javax.swing.JFrame {
 	pannello_carteB.validate();
     }
 
+    // Assegna una carta al giocatore
     private void daiCartaGiocatore() {
         CartaBJ c1;
         CartaBJGUI cg1;
@@ -210,25 +211,26 @@ public class BlackJack extends javax.swing.JFrame {
         deal.setEnabled(value);
     }
 
-    // Controllo il black Jack; il parametro passato mi permette di sapere su che oggetto � stato chiamato
+    // Controlla se si verifica un blackjack confrontando le carte del banco o del giocatore 
+    // a seconda del parametro obj con un asso e una carta dal valore di 10. 
     private boolean blackJack(String obj) {
         String val1="";
         String val2="";
-        if(("B".equals(obj)) && (banco.getNGiocate() == 2)) {
+        if(("BANCO".equals(obj)) && (banco.getNGiocate() == 2)) {
           val1 = banco.getValoreCarta(0);
           val2 = banco.getValoreCarta(1);
         } 
-        else if(("G".equals(obj)) && (giocatore.getNGiocate() == 2)) {
+        else if(("GIOCATORE".equals(obj)) && (giocatore.getNGiocate() == 2)) {
           val1 = giocatore.getValoreCarta(0);
           val2 = giocatore.getValoreCarta(1);
         }
         else {
           return false;
         }
-        if(val1.equals("A") && (PuntiCarte.getValoreCarta(val2) == 10)) {
+        if(val1.equals("ASSO") && (PuntiCarte.getValoreCarta(val2) == 10)) {
           return true;
         }
-        else if(val2.equals("A") && (PuntiCarte.getValoreCarta(val1) == 10)) {
+        else if(val2.equals("ASSO") && (PuntiCarte.getValoreCarta(val1) == 10)) {
           return true;
         }
         return false;
