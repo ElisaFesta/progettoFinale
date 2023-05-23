@@ -1,5 +1,10 @@
 package progettofinale;
 
+/**
+ *
+ * @author elisa-stefano-diego
+ */
+
 public class Utente {
 
     protected String nome, cognome, email;

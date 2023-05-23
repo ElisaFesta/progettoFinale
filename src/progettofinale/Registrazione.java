@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author elisa
+ * @author elisa-stefano-diego
  */
 public class Registrazione extends javax.swing.JFrame {
 

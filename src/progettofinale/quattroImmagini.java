@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author elisa
+ * @author elisa-stefano-diego
  */
 public class QuattroImmagini extends javax.swing.JFrame {
 

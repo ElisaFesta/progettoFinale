@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author elisa
+ * @author elisa-stefano-diego
  */
 public class Gioco1 extends javax.swing.JFrame {
 
