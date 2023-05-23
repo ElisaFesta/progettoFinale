@@ -10,7 +10,7 @@ public class SceltaGioco extends javax.swing.JFrame
     /**
      * Creates new form SceltaGioco
      */
-    public SceltaGioco() {
+    public SceltaGioco() { 
         setVisible(true);
         initComponents();
         setLocationRelativeTo(null);
@@ -108,7 +108,7 @@ public class SceltaGioco extends javax.swing.JFrame
     }//GEN-LAST:event_BlackJackActionPerformed
 
     private void QuattroImmaginiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuattroImmaginiActionPerformed
-        quattroImmagini qi = new quattroImmagini();
+        QuattroImmagini qi = new QuattroImmagini();
         setVisible(false);
     }//GEN-LAST:event_QuattroImmaginiActionPerformed
 
