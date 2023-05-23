@@ -36,12 +36,15 @@ public class Gioco1 extends javax.swing.JFrame {
     /**
      * Creates new form Gioco1
      */
+    
+    //costruttore
     public Gioco1() {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//restituisco le dimensioni dello schermo e Dimension contiene le informazioni della larghezza e altezza
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);//calcolo per mettere la finestra al centro dello schermo
         initComponents();
     }
-
+    
+    //costruttore con 2 parametri
     public Gioco1(String nome, int numero) {
         initComponents();
         setVisible(true);
@@ -55,14 +58,14 @@ public class Gioco1 extends javax.swing.JFrame {
         if (numero == 1) {
 
             try {
-                File myObj = new File("profilo_1.txt");
+                File myObj = new File("profilo_1.txt");//creo un oggetto File che rappresenta il file profilo_1.txt
                 Scanner myReader = new Scanner(myObj);
 
-                data = Integer.parseInt(myReader.nextLine());
-                System.out.println(data);
-                myReader.close();
+                data = Integer.parseInt(myReader.nextLine());//leggo la prima riga del file e la converto a un intero che verrà assegnato a data
+                System.out.println(data);//stampo il valore di data
+                myReader.close();//chiudo il file
 
-            } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {//se si verifica un'eccezione viene stampato un messaggio di errore
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }

@@ -94,9 +94,9 @@ public class QuattroImmagini extends javax.swing.JFrame {
             Scanner myReader = new Scanner(myObj);  //creazione oggetto 'Scanner' chiamato 'myReader' per leggere il contenuto del file "startup.txt"
 
             if (value == 1) {   //
-                if (myReader.hasNextLine()) {
-                    data3 = myReader.nextLine();
-                    System.out.println(data3);
+                if (myReader.hasNextLine()) {//controllo se il file input ha una riga successiva disponibile
+                    data3 = myReader.nextLine();//se la condizione è vera vieen letto il contenuto della riga successiva e il valore viene assegnato a data3
+                    System.out.println(data3);//stampo il valore di data3
                 }
                 if (myReader.hasNextLine()) {
                     data1 = myReader.nextLine();
@@ -126,13 +126,15 @@ public class QuattroImmagini extends javax.swing.JFrame {
 
             }
 
-            myReader.close();
+            myReader.close();//chiudo il file
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        StringBuilder stringBuilder = new StringBuilder();
+        
+        StringBuilder stringBuilder = new StringBuilder();//StringBuilder viene utilizzato per manipolare le stringhe consentendo l'aggiunta, la modifica e l'eliminazione di caratteri all'interno di una sequenza di caratteri
 
+        //svuto il contenuto del file startup.txt
         try {
             writer = new PrintWriter("startup.txt");
             writer.print("");
@@ -149,10 +151,11 @@ public class QuattroImmagini extends javax.swing.JFrame {
 
             Scanner myReader = new Scanner(myObj);
 
+            //verifico che la variabile data1 non sia nulla
             if (data1 != null) {
-                stringBuilder.append(data1);
+                stringBuilder.append(data1);//con append concateno il contenuto di data1 alla stringa presente in stringBuilder
                 System.out.println("la stampa va : " + data1);
-                stringBuilder.append("\n");
+                stringBuilder.append("\n");//aggiungo una nuova riga per separare il contenuto aggiunto
             }
 
             if (data2 != null) {
@@ -160,7 +163,7 @@ public class QuattroImmagini extends javax.swing.JFrame {
                 stringBuilder.append("\n");
 
             }
-            myReader.close();
+            myReader.close();//chiudo il file
 
         } catch (FileNotFoundException e) {
 
@@ -172,9 +175,9 @@ public class QuattroImmagini extends javax.swing.JFrame {
         try {
             FileWriter myWriter = new FileWriter("startup.txt");
 
-            myWriter.write(stringBuilder.toString());
+            myWriter.write(stringBuilder.toString());//scrivo il contenuto dell'oggetto sul file
 
-            myWriter.close();
+            myWriter.close();//chiudo il file
 
             System.out.println("Scrittura avvenuta con successo");
 
@@ -188,17 +191,18 @@ public class QuattroImmagini extends javax.swing.JFrame {
         try {
             File myObj = new File("startup.txt");
             Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
+            while (myReader.hasNextLine()) {//leggo le linee del file e salvo ciascuna linea letta nella varibile data
                 String data = myReader.nextLine();
                 if (data != null) {
                     profili[i] = true;
 
                     i++;
                 }
+                //verifico che è stato trovato almeno 1 profilo valido 
                 if (i == 1) {
 
-                    profilo1_button.setVisible(true);
-                    profilo1_button.setText(data);
+                    profilo1_button.setVisible(true);//rendo visibile il bottone 
+                    profilo1_button.setText(data);//il testo del componente viene impostato con il valore della variabile data
 
                 }
                 if (i == 2) {
@@ -216,7 +220,7 @@ public class QuattroImmagini extends javax.swing.JFrame {
                 }
 
             }
-            myReader.close();
+            myReader.close();//chiudo il file
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -224,12 +228,13 @@ public class QuattroImmagini extends javax.swing.JFrame {
     }
 
     ////////////////////////////////////////////separatore////////////////////////////////////////////
+    //costruttore
     public QuattroImmagini(int value, String nome_nuovo) {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);//ottengo le dimensioni dello schermo e imposto la posizione della finestra al centro dello schermo
         profilo1_button.setVisible(false);
-        profilo2_button.setVisible(false);
+        profilo2_button.setVisible(false);//nascondo i bottoni all'avvio
         profilo3_button.setVisible(false);
         boolean[] profili = {false, false, false};
 
@@ -380,12 +385,12 @@ public class QuattroImmagini extends javax.swing.JFrame {
         }
 
         if (value == 1) {
-            nome = profilo1_button.getText();
+            nome = profilo1_button.getText();//il testo del pulsante rappresenta il nome del profilo selezionato
             n_profilo = 1;
 
             Gioco1 g = new Gioco1(nome, n_profilo);
-            g.setVisible(true);
-            this.setVisible(false);
+            g.setVisible(true);//rendo visibile l'interfaccia del gioco
+            this.setVisible(false);//nascondo l'interfaccia grafica dei profili
         }
         if (value == 2) {
             nome = profilo2_button.getText();
@@ -640,12 +645,14 @@ public class QuattroImmagini extends javax.swing.JFrame {
         System.exit(0); //termina il programma
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //evento bottone registrazione
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Registrazione r = new Registrazione();
-        r.setVisible(true);
-        this.setVisible(false);
+        Registrazione r = new Registrazione();//creo un nuovo oggetto 'Registrazione' chiamato r
+        r.setVisible(true);//rendo visibile l'interfaccia grafica della registrazione
+        this.setVisible(false);//nascondo l'interfaccia grafica corrente
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //evento bottone per avviare il gioco del primo profilo
     private void profilo1_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilo1_buttonActionPerformed
         nome = profilo1_button.getText();
         n_profilo = 1;
@@ -655,6 +662,7 @@ public class QuattroImmagini extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_profilo1_buttonActionPerformed
 
+    //evento bottone per avviare il gioco del secondo profilo
     private void profilo2_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilo2_buttonActionPerformed
         nome = profilo2_button.getText();
         n_profilo = 2;
@@ -664,6 +672,7 @@ public class QuattroImmagini extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_profilo2_buttonActionPerformed
     
+    //evento bottone per avviare il gioco del terzo profilo
     private void profilo3_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilo3_buttonActionPerformed
         nome = profilo3_button.getText();
         n_profilo = 3;

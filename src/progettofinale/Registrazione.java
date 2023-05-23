@@ -228,11 +228,12 @@ public class Registrazione extends javax.swing.JFrame {
             memo.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    //nascodo la finestra di SceltaGioco e mostro la finestra di QuattroImmagini
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        QuattroImmagini l = new QuattroImmagini();
-        l.setVisible(true);
+        QuattroImmagini l = new QuattroImmagini();//creo un oggetto della classe QuattroImmagini
+        l.setVisible(true);//rendo visibile l'oggetto
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -263,9 +264,10 @@ public class Registrazione extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registrazione().setVisible(true);
+        //
+        java.awt.EventQueue.invokeLater(new Runnable() {//creo un oggetto Runnable che implementa il metodo run()
+            public void run() {//il metodo run() contiene il codice che verrà eseguito nel thread di evento
+                new Registrazione().setVisible(true);//creo un nuovo oggetto Registrazione e lo rendo visibile
             }
         });
     }
