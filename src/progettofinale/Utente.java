@@ -7,18 +7,16 @@ package progettofinale;
 
 public class Utente {
 
-    protected String nome, cognome, email;
+    protected String nome, cognome;
 
     Utente(String nome) {
         this.nome = nome;
         cognome = "";
-        email = "";
     }
 
-    public Utente(String nome, String cognome, String email){
+    public Utente(String nome, String cognome){
         this.nome = nome;
         this.cognome = cognome;
-        this.email = email;
     }
     public String getNome() {
         return nome;
@@ -34,14 +32,5 @@ public class Utente {
 
     public void setCognome(String cognome) {
         this.cognome = cognome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
+    }  
 }

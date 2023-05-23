@@ -644,7 +644,6 @@ public class QuattroImmagini extends javax.swing.JFrame {
         Registrazione r = new Registrazione();
         r.setVisible(true);
         this.setVisible(false);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void profilo1_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilo1_buttonActionPerformed
@@ -654,7 +653,6 @@ public class QuattroImmagini extends javax.swing.JFrame {
         Gioco1 g = new Gioco1(nome, n_profilo);
         g.setVisible(true);
         this.setVisible(false);
-
     }//GEN-LAST:event_profilo1_buttonActionPerformed
 
     private void profilo2_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilo2_buttonActionPerformed
@@ -665,7 +663,7 @@ public class QuattroImmagini extends javax.swing.JFrame {
         g.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_profilo2_buttonActionPerformed
-
+    
     private void profilo3_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilo3_buttonActionPerformed
         nome = profilo3_button.getText();
         n_profilo = 3;
