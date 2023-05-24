@@ -95,7 +95,7 @@ public class QuattroImmagini extends javax.swing.JFrame {
 
             if (value == 1) {   //
                 if (myReader.hasNextLine()) {//controllo se il file input ha una riga successiva disponibile
-                    data3 = myReader.nextLine();//se la condizione è vera vieen letto il contenuto della riga successiva e il valore viene assegnato a data3
+                    data3 = myReader.nextLine();//se la condizione è vera viene letto il contenuto della riga successiva e il valore viene assegnato a data3
                     System.out.println(data3);//stampo il valore di data3
                 }
                 if (myReader.hasNextLine()) {

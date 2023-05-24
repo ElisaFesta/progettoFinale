@@ -262,7 +262,8 @@ public class BlackJack extends javax.swing.JFrame {
         new_game = new javax.swing.JButton();
         pannello_carteB = new javax.swing.JPanel();
         pannello_carteG = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -370,7 +371,7 @@ public class BlackJack extends javax.swing.JFrame {
             }
         });
         getContentPane().add(new_game);
-        new_game.setBounds(560, 360, 100, 23);
+        new_game.setBounds(550, 360, 120, 23);
 
         pannello_carteB.setBackground(new java.awt.Color(0, 102, 51));
         getContentPane().add(pannello_carteB);
@@ -380,10 +381,19 @@ public class BlackJack extends javax.swing.JFrame {
         getContentPane().add(pannello_carteG);
         pannello_carteG.setBounds(260, 250, 170, 110);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettofinale/tavoloblackjack1.jpg"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 0, 722, 400);
+        jButton1.setText("TORNA MENU");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(550, 330, 120, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progettofinale/tavoloblackjack1.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-3, 0, 680, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -497,6 +507,13 @@ public class BlackJack extends javax.swing.JFrame {
 	blackJackBanco = false;
     }//GEN-LAST:event_new_gameActionPerformed
 
+    //torna al menu principale
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        SceltaGioco s = new SceltaGioco();
+        s.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -539,7 +556,8 @@ public class BlackJack extends javax.swing.JFrame {
     private javax.swing.JButton cinqueCento;
     private javax.swing.JButton deal;
     private javax.swing.JButton hit;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton new_game;
     private javax.swing.JPanel pannello_carteB;
     private javax.swing.JPanel pannello_carteG;
