@@ -33,8 +33,11 @@ public class CartaBJGUI extends JPanel {
     // Disegna la carta
     public void paintComponent(Graphics g)
     {
+        //Questa riga invoca il metodo paintComponent della classe genitore per assicurarsi che il componente venga disegnato correttamente 
+        //prima di eseguire il disegno personalizzato. 
         super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g;
+        //crea una nuova variabile g2 di tipo Graphics2D e le assegna il valore del parametro g.
+        Graphics2D g2 = (Graphics2D) g; 
 	g2.setPaint(Color.WHITE);
 	Rectangle2D rettangolo = new Rectangle2D.Double(0,0,W,H); //disegna il rettangolo dagli angoli 0,0 del JPanel di larghezza W ed altezza H
 	g2.fill(rettangolo); //riempie la forma rettangolo con il colore corrente impostato in g2
