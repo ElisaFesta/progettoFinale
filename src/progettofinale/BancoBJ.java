@@ -8,10 +8,7 @@ import java.util.ArrayList;
  */
 
 class BancoBJ {
-    private final int SUP = 16; // Minimo da superare; in caso contrario si estrae una nuova carta
-    private final int TOT = 21; // Totale da non superare
     private int punti_accumulati = 0; // Memorizza i punti della mano corrente
-
     private ArrayList<CartaBJ> carte_giocate; //utilizzato per memorizzare le carte distribuite al banco durante le diverse fasi del gioco 
 
     BancoBJ() {
